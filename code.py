@@ -12,7 +12,7 @@ for m in fichier_de_mots_francais:
 mot = liste_de_mots_francais[random.randint(0, len(liste_de_mots_francais)-1)]
 
 
-# choisir la longueur du motjjjjjjjj
+# choisir la longueur du motGGGGGG
 
 
 def longueur_du_mot(l,mot):
