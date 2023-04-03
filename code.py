@@ -28,4 +28,4 @@ while asterix != mot_a_deviner and erreurs < tentatives:
 if mot_a_deviner == asterix and erreurs < tentatives:
     print('Bravo ! Le mot', mot_a_deviner, 'a été trouvé')
 else:
-    print('vous avez perdu! Le mot', mot_a_deviner, 'n a pas etait retrouvé')
+    print('vous avez perdu! Le mot', mot_a_deviner, "le mot n'a pas été retrouvé")
