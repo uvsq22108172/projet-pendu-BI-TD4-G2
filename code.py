@@ -23,6 +23,9 @@ while asterix != mot_a_deviner and erreurs < tentatives:
     for i in range(len(mot_a_deviner)):
         if lettre == mot_a_deviner[i]:
             asterix = asterix[:i] + lettre + asterix[i+1:]
+        else:
+            erreurs += 1
+            print("Le nomres de tentatives restantes est:", tenratives - erreurs)
     print(asterix)
 
 if mot_a_deviner == asterix and erreurs < tentatives:
