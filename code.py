@@ -43,7 +43,7 @@ entier_menu = tk.OptionMenu(graphique, entier_var, 6, 7, 8, 9, 10)
 entier_menu.pack()
 
 # Création d'un bouton pour valider le choix du nombre de lettres
-choisir_entier_btn = tk.Button(graphique, text="Confirmez le nb de lettres", command=word_length)
+choisir_entier_btn = tk.Button(graphique, text="Confirmer le nb de lettres", command=word_length)
 choisir_entier_btn.pack()
 
 # Création d'un label pour afficher la valeur choisie
@@ -66,7 +66,7 @@ number_menu = tk.OptionMenu(graphique, number_var, 5, 7, 9)
 number_menu.pack()
 
 # Création d'un bouton pour valider le choix de l'entier
-choisir_number_btn = tk.Button(graphique, text="Confirmez le nb de tentatives", command=attempts_allowed)
+choisir_number_btn = tk.Button(graphique, text="Confirmer le nb de tentatives", command=attempts_allowed)
 choisir_number_btn.pack()
 
 # Création d'un label pour afficher la valeur choisie
