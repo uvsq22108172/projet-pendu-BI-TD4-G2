@@ -4,7 +4,7 @@ from tkinter import *
 import random
 import pygame
 
-graphique = tk.Tk()                                 
+graphique = tk.Tk()                               
 graphique.geometry("1920x1080")                                 
 graphique.title("Pendu BI-TD4_Groupe 2")
 mainmenu = tkinter.Menu(graphique)
@@ -20,7 +20,7 @@ def aide_pendu():
     label_aide = Label(aide1, text= "Le but du jeu est simple : deviner toute les lettres qui doivent composer un mot en un nombre limité de tentatives. A chaque fois que le joueur devine une lettre, celle-ci est affichée. Dans le cas contraire, le dessin d'un pendu se met à apparaître…")
     label_aide.pack(pady= 250)
     aide1.geometry("1920x1080")
-    bouton_leave = Button(aide1, text="Revenir au menu principale", command= (exit_aide))
+    bouton_leave = Button(aide1, text="Revenir au menu principale", command=(exit_aide))
     bouton_leave.pack(pady=100)
 
 def exit_aide() :
@@ -56,7 +56,7 @@ valeur_label.pack()
 def attempts_allowed():
     global number
     number = number_var.get()
-    val_label.config(text="Le nombres d'erreurs autorisés  est de : " + str(number))
+    val_label.config(text="Le nombre d'erreurs autorisés  est de : " + str(number))
 
 
 # Création du menu déroulant pour choisir un entier(nombre d'erreurs)
@@ -74,9 +74,7 @@ val_label = tk.Label(graphique, text="")
 val_label.pack()
 
 
-
-
-def jeu_du_pendu() :
+def jeu_du_pendu():
     # Fonction pour choisir un mot au hasard
 
     
@@ -93,7 +91,8 @@ def jeu_du_pendu() :
         mots = [['touche', 'joyeux'], ['docteur', 'ajdoint'], ['biologie', 'absorber'], ['abdominal', 'zymologie'], ['architecte', 'professeur']]
         return random.choice(mots[entier-6])
 
-    def vérification(lettre, mot, mot_caché):           #vérifie si la lettre est dans le mot
+# vérifie si la lettre est dans le mot
+    def vérification(lettre, mot, mot_caché):           
         for i in range(len(mot)):
             if mot[i] == lettre:
                 mot_caché = mot_caché[:i] + lettre + mot_caché[i+1:]
@@ -102,12 +101,11 @@ def jeu_du_pendu() :
     def montrer_mot_caché(mot_caché):             #affiche le mot caché
         return ' '.join(mot_caché)
 
-    
     global tentatives_restantes
     
     jeu = tk.Tk()
     jeu.geometry('1920x1080')
-    
+
     label_mot = tk.Label(jeu, text='')
     label_mot.pack(pady=100)
 
@@ -120,7 +118,6 @@ def jeu_du_pendu() :
     bouton_deviner = tk.Button(jeu, text='Deviner')
     bouton_deviner.pack(pady=80)
 
-
     global tentatives_restantes, mot_caché
     
     mot = choix_du_mot()
@@ -128,14 +125,14 @@ def jeu_du_pendu() :
     tentatives_restantes = number
 
     
-    def deviner_une_lettre() :                           #fonction qui gère une tentative "gagnante" ou "perdante" 
+    def deviner_une_lettre():                           #fonction qui gère une tentative "gagnante" ou "perdante" 
         global tentatives_restantes, mot_caché
         lettre = entry_lettre.get().lower()
         entry_lettre.delete(0, tk.END)
-        if lettre in mot :
+        if lettre in mot:
             mot_caché = vérification(lettre, mot, mot_caché)
             label_mot.config(text=montrer_mot_caché(mot_caché))
-            if '*' not in mot_caché :
+            if '*' not in mot_caché:
                 label_tentatives_restantes.config(text='Vous avez gagné !')
                 bouton_deviner.config(state=tk.DISABLED)
         else:
@@ -146,6 +143,33 @@ def jeu_du_pendu() :
                 label_tentatives_restantes.config(text='Vous avez perdu !')
                 bouton_deviner.config(state=tk.DISABLED)
 
+    #pendu_canvas = tk.Canvas(jeu, width=200, height=200)
+    #pendu_canvas.pack()
+
+        # Dessinez le pendu initial   
+    #pendu_canvas.create_line(10, 190, 190, 190)
+    #pendu_canvas.create_line(20, 190, 20, 20)
+    #pendu_canvas.create_line(20, 20, 100, 20)
+    #pendu_canvas.create_line(100, 20, 100, 40)
+   
+        # Fonction pour dessiner le pendu
+    
+    #def dessiner_pendu():
+        #global tentatives_restantes
+        #if tentatives_restantes == 5:
+           # pendu_canvas.create_oval(80, 40, 120, 80)
+       # elif tentatives_restantes == 4:
+        #    pendu_canvas.create_line(100, 80, 100, 120)
+        #elif tentatives_restantes == 3:
+         #   pendu_canvas.create_line(100, 90, 80, 110)
+        #elif tentatives_restantes == 2:
+         #   pendu_canvas.create_line(100, 90, 120, 110)
+        #elif tentatives_restantes == 1:
+         #   pendu_canvas.create_line(100, 120, 80, 160)
+        #elif tentatives_restantes == 0:
+         #   pendu_canvas.create_line(100, 120, 120, 160)
+        
+       
     #def rejouer() :
         #global mot, mot_caché, tentatives_restantes
         #mot = choix_du_mot()
@@ -154,7 +178,7 @@ def jeu_du_pendu() :
         #label_mot.config(text=montrer_mot_caché(mot_caché))
         #label_tentatives_restantes.config(text=f'Nombre de tentatives restantes: {tentatives_restantes}')
         #bouton_deviner.config(state=tk.NORMAL)
-    def rejouer() :
+    def rejouer():
         jeu.destroy()
         jeu_du_pendu()
     bouton_rejouer = tk.Button(jeu, text='Rejouer', command=rejouer)
@@ -167,11 +191,11 @@ def jeu_du_pendu() :
 # Affichage du mot caché
     label_mot.config(text=montrer_mot_caché(mot_caché))
 
-    def exit_jeu() :
+    def exit_jeu():
         jeu.destroy()
-    
+        
     bouton_quitter_jeu = Button(jeu, text="Revenir au menu principale", command=(exit_jeu))
-    bouton_quitter_jeu.pack(pady= 100)
+    bouton_quitter_jeu.pack(pady=100)
 
     
     
@@ -213,6 +237,10 @@ bouton_play.pack()
 
 bouton_leave = Button(text="Quitter", command=(quit))
 bouton_leave.pack(pady=20)
+
+# Création du bouton de score
+score_button = tk.Button(graphique, text="Score: ")
+score_button.pack()
 
 paramètres = tkinter.Menu(mainmenu)                        
 paramètres.add_radiobutton(label= 'Volume Sonore', command=(change_vol))
