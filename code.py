@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import *
 import random
 import pygame
+from PIL import ImageTk, Image
+
 
 graphique = tk.Tk()                               
 graphique.geometry("1920x1080")                                 
@@ -10,15 +12,16 @@ graphique.title("Pendu BI-TD4_Groupe 2")
 mainmenu = tkinter.Menu(graphique)
 
 label = Label(text="Jeu du Pendu")                                     
-label.pack(pady=100) 
+label.pack(pady=100)
 
 aide1 = None       #variable globale 
+
 
 def aide_pendu():
     global aide1  #référence variable globale
     aide1 = tk.Tk()
-    label_aide = Label(aide1, text= "Le but du jeu est simple : deviner toute les lettres qui doivent composer un mot en un nombre limité de tentatives. A chaque fois que le joueur devine une lettre, celle-ci est affichée. Dans le cas contraire, le dessin d'un pendu se met à apparaître…")
-    label_aide.pack(pady= 250)
+    label_aide = Label(aide1, text="Le but du jeu est simple : deviner toute les lettres qui doivent composer un mot en un nombre limité de tentatives. A chaque fois que le joueur devine une lettre, celle-ci est affichée. Dans le cas contraire, le dessin d'un pendu se met à apparaître…")
+    label_aide.pack(pady=250)
     aide1.geometry("1920x1080")
     bouton_leave = Button(aide1, text="Revenir au menu principale", command=(exit_aide))
     bouton_leave.pack(pady=100)
@@ -143,31 +146,7 @@ def jeu_du_pendu():
                 label_tentatives_restantes.config(text='Vous avez perdu !')
                 bouton_deviner.config(state=tk.DISABLED)
 
-    #pendu_canvas = tk.Canvas(jeu, width=200, height=200)
-    #pendu_canvas.pack()
 
-        # Dessinez le pendu initial   
-    #pendu_canvas.create_line(10, 190, 190, 190)
-    #pendu_canvas.create_line(20, 190, 20, 20)
-    #pendu_canvas.create_line(20, 20, 100, 20)
-    #pendu_canvas.create_line(100, 20, 100, 40)
-   
-        # Fonction pour dessiner le pendu
-    
-    #def dessiner_pendu():
-        #global tentatives_restantes
-        #if tentatives_restantes == 5:
-           # pendu_canvas.create_oval(80, 40, 120, 80)
-       # elif tentatives_restantes == 4:
-        #    pendu_canvas.create_line(100, 80, 100, 120)
-        #elif tentatives_restantes == 3:
-         #   pendu_canvas.create_line(100, 90, 80, 110)
-        #elif tentatives_restantes == 2:
-         #   pendu_canvas.create_line(100, 90, 120, 110)
-        #elif tentatives_restantes == 1:
-         #   pendu_canvas.create_line(100, 120, 80, 160)
-        #elif tentatives_restantes == 0:
-         #   pendu_canvas.create_line(100, 120, 120, 160)
         
        
     #def rejouer() :
