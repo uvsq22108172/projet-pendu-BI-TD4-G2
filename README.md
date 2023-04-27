@@ -13,4 +13,4 @@ Le jeu comporte également une musique de fond dont le joueur peut modifier le v
 Guillaume Haugazeau  : Musique, Jeu, Menu, Aide
 Dina Nait-Kaci : Pouvoir choisir le nombre de tentatives et de lettres que comporte le mot, enrichir le dictionnaire
 Edgar Liduti : Images du pendu
-Amine Idrissi : Images du pendu, bouton
+Amine Idrissi : Images du pendu, bouton, fenetre
