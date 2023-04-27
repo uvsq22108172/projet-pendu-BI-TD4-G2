@@ -323,6 +323,32 @@ def jeu_du_pendu_aléatoire() :
             #img = ImageTk.PhotoImage(Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu0.png"))
             #make_label(jeu, 0, 0, 400, 100, img)
             
+            
+  #tentatives_restantes = 7
+
+
+    #if tentatives_restantes == 6:
+        #pendu = Image.open("https://prnt.sc/mWlP3OAKoJpb")
+        #pendu.show()
+    #elif tentatives_restantes == 5:
+        #pendu = Image.open("https://prnt.sc/3Jov0ZAYauWy")
+       # pendu.show()
+    #elif tentatives_restantes == 4:
+       # pendu = Image.open("https://prnt.sc/aFOJKI1vVseV")
+       # pendu.show()
+    #elif tentatives_restantes == 3:
+      #  pendu = Image.open("https://prnt.sc/kQeIJeQKA1lf")
+       # pendu.show()
+   # elif tentatives_restantes == 2:
+        #pendu = Image.open("https://prnt.sc/HClujx6f5ZX5")
+       # pendu.show()
+    #elif tentatives_restantes == 1:
+       # pendu = Image.open("https://prnt.sc/mNs__PDbBgAo")
+        #pendu.show()
+    #else:
+       # pendu = Image.open("https://prnt.sc/BSnhujXm9p9j")
+       # pendu.show()
+            
    
     def rejouer() :
         jeu.destroy()
