@@ -4,15 +4,17 @@ from tkinter import *
 import random
 import pygame
 from PIL import Image,ImageTk
+from tkinter import ttk
+
 
 graphique = tk.Tk()                                   
 graphique.geometry("1920x1080")                                 
 graphique.title("Pendu BI-TD4_Groupe 2")
 mainmenu = tkinter.Menu(graphique)
 
-bg = tk.PhotoImage(file= "C:/Fac/L1 Semestre 2/IN200N/IMAGES PENDU/bgpendu.png")
-bg_label = tk.Label(graphique, image= bg)
-bg_label.configure(width=graphique.winfo_width(),height=graphique.winfo_height())
+#bg = tk.PhotoImage(file= "C:/Fac/L1 Semestre 2/IN200N/IMAGES PENDU/bgpendu.png")
+#bg_label = tk.Label(graphique, image= bg)
+#bg_label.configure(width=graphique.winfo_width(),height=graphique.winfo_height())
 
 
 label = Label(text= "Jeu du Pendu")                                     
@@ -169,7 +171,7 @@ def jeu_du_pendu() :
     def exit_jeu() :
         jeu.destroy()
     
-    bouton_quitter_jeu = Button(jeu, text="Revenir au menu principale", command=(exit_jeu))
+    bouton_quitter_jeu = Button(jeu, text="Revenir au menu principale", fg= "red", command=(exit_jeu))
     bouton_quitter_jeu.pack(pady= 100)
 
 def jeu_du_pendu_aléatoire() :
@@ -256,6 +258,8 @@ def jeu_du_pendu_aléatoire() :
         canvas = Canvas(jeu, width=Image_1.width(), height=Image_2.height())
         canvas.pack(side= LEFT)
         Image_1= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu0.png")
+        #self.tkimage = ImageTk.PhotoImage(Image_1)
+        #Label(self,image = self.tkimage).place(x = 0, y = 0, relwidth=1, relheight=1)
         Image_2= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu1.png")
         Image_3= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu2.png")
         Image_4= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu3.png")
@@ -271,29 +275,54 @@ def jeu_du_pendu_aléatoire() :
         photo6 = ImageTk.PhotoImage(Image_6)
         photo7= ImageTk.PhotoImage(Image_7)
         photo8= ImageTk.PhotoImage(Image_8)
-        if tentatives_restantes == 7 :
-            canvas.create_image(0, 0, anchor=NW, image=photo1)
-        if tentatives_restantes == 6 :
-            canvas.create_image(0, 0, anchor=NW, image=photo2)
-        if tentatives_restantes == 5 :
-            canvas.create_image(0, 0, anchor=NW, image=photo3)
-        if tentatives_restantes == 4 :
-            canvas.create_image(0, 0, anchor=NW, image=photo4)
-        if tentatives_restantes == 3 :
-            canvas.create_image(0, 0, anchor=NW, image=photo5)
-        if tentatives_restantes == 2 :
-            canvas.create_image(0, 0, anchor=NW, image=photo6)
-        if tentatives_restantes == 1 :
-            canvas.create_image(0, 0, anchor=NW, image=photo7)
-        if tentatives_restantes == 0 :
-            canvas.create_image(0, 0, anchor=NW, image=photo8)
-        im = PhotoImage(file=Image_1)
-        dessin_pendu.create_image(x=0, y=100, image = im)
+        label = tk.Label(background=Image_1)
         
-   
+        #if tentatives_restantes == 7 :
+            #label1 = tkinter.Label(image= photo1)
+            #label1.image_names = photo1
+            #canvas.create_image(0, 0, anchor=NW, image=photo1)
+        #if tentatives_restantes == 6 :
+            #jeu = tk.Tk()
+            #jeu.geometry('300*200')
+            #jeu.resizable(False, False)
+            #jeu.title('Label Widget Image')
+            #photo = tk.Photoimage(file = 'C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu1.png')
+            #image_label = ttk.Label(
+                #jeu,
+                #image=photo,
+                #padding=5
+            #)
+            #image_label.pack()
 
+            #jeu.mainloop()
+        #if tentatives_restantes == 5 :
+            #canvas.create_image(0, 0, anchor=NW, image=photo3)
+        #if tentatives_restantes == 4 :
+            #canvas.create_image(0, 0, anchor=NW, image=photo4)
+        #if tentatives_restantes == 3 :
+            #canvas.create_image(0, 0, anchor=NW, image=photo5)
+        #if tentatives_restantes == 2 :
+            #canvas.create_image(0, 0, anchor=NW, image=photo6)
+        #if tentatives_restantes == 1 :
+            #canvas.create_image(0, 0, anchor=NW, image=photo7)
+        #if tentatives_restantes == 0 :
+            #canvas.create_image(0, 0, anchor=NW, image=photo8)
 
-
+        #def make_label(master,x,y,w,h,img, *args, **kwargs):
+            #f = Frame(master, height= h, widh =w)
+            #f.pack_propagate(0)
+            #f.place(x = x, y = y)
+            #label = Label(f, image = img, *args, **kwargs)
+            #label.pack(fill = BOTH, expand = 1)
+            #return label
+        #if __name__=='__main__':
+            #jeu = tk.Tk()
+            #frame = tk.Frame(jeu, width=400, height=600, bg = 'green')
+            #frame.pack_propagate(0)
+            #frame.pack()
+            #img = ImageTk.PhotoImage(Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu0.png"))
+            #make_label(jeu, 0, 0, 400, 100, img)
+            
    
     def rejouer() :
         jeu.destroy()
@@ -372,3 +401,4 @@ mainmenu.add_cascade(label= 'Aide', menu= aide)
 graphique.config(menu=mainmenu)
 
 graphique.mainloop()
+
