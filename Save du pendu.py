@@ -348,6 +348,8 @@ def jeu_du_pendu_aléatoire() :
     #else:
        # pendu = Image.open("https://prnt.sc/BSnhujXm9p9j")
        # pendu.show()
+    
+    #source:https://codatik.com/lire-image-avec-python/
             
    
     def rejouer() :
