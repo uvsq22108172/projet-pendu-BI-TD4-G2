@@ -10,6 +10,11 @@ graphique.geometry("1920x1080")
 graphique.title("Pendu BI-TD4_Groupe 2")
 mainmenu = tkinter.Menu(graphique)
 
+bg = tk.PhotoImage(file= "C:/Fac/L1 Semestre 2/IN200N/IMAGES PENDU/bgpendu.png")
+bg_label = tk.Label(graphique, image= bg)
+bg_label.configure(width=graphique.winfo_width(),height=graphique.winfo_height())
+
+
 label = Label(text= "Jeu du Pendu")                                     
 label.pack(pady=100)
 
@@ -74,9 +79,8 @@ val_label.pack()
 
 
 def jeu_du_pendu() :
-    #sources : http://lycee.lagrave.free.fr/isn/projet/8_projet_pendu_GUI_tkinter.html, https://www.mathweb.fr/euclide/2020/09/07/le-jeu-du-pendu-en-python/
-                
-
+    #sources : http://lycee.lagrave.free.fr/isn/projet/8_projet_pendu_GUI_tkinter.html, https://www.mathweb.fr/euclide/2020/09/07/le-jeu-du-pendu-en-python/, https://www.youtube.com/watch?v=ITDo4OkI6mk&ab_channel=CharlieCode, https://openclassrooms.com/forum/sujet/jeu-pendu-avec-tkinter
+    
     #images = ["C:\Fac\L1 Semestre 2\IN200N\projet-pendu-BI-TD4-G2-main\Dessin pendu\erreur1", #images du pendu
      #"C:\Fac\L1 Semestre 2\IN200N\projet-pendu-BI-TD4-G2-main\Dessin pendu\erreur2", 
     #"C:\Fac\L1 Semestre 2\IN200N\projet-pendu-BI-TD4-G2-main\Dessin pendu\erreur3", 
@@ -171,9 +175,9 @@ def jeu_du_pendu() :
 def jeu_du_pendu_aléatoire() :
 
     def choix_du_mot() :
+        global mots_aléatoire
         mots_aléatoire = ['manger', 'docteur', 'effacer', 'xylophone', 'guitare']
         return random.choice(mots_aléatoire)
-    
     
 
     def vérification(lettre, mot, mot_caché) :           #vérifie si la lettre est dans le mot
@@ -182,7 +186,7 @@ def jeu_du_pendu_aléatoire() :
                 mot_caché = mot_caché[:i] + lettre + mot_caché[i+1:]
         return mot_caché
 
-    def montrer_mot_caché(mot_caché) :             #affiche le mot caché
+    def montrer_mot_caché(mot_caché) :             #met des espaces entre les lettres
         return ' '.join(mot_caché)
 
     global tentatives_restantes
@@ -199,7 +203,7 @@ def jeu_du_pendu_aléatoire() :
     entry_lettre = tk.Entry(jeu)
     entry_lettre.pack()
 
-    bouton_deviner = tk.Button(jeu, text='Deviner')
+    bouton_deviner = tk.Button(jeu, fg="blue", text='Deviner')
     bouton_deviner.pack(pady=80)
 
     global tentatives_restantes, mot_caché
@@ -226,17 +230,39 @@ def jeu_du_pendu_aléatoire() :
                 label_mot.config(text=mot)
                 label_tentatives_restantes.config(text='Vous avez perdu !')
                 bouton_deviner.config(state=tk.DISABLED)
+
+    def ajouter_mot():
+        nouveau_mot = entree_mot.get()
+        if nouveau_mot != '':
+            mots_aléatoire.append(nouveau_mot)
+            label_confirmation.config(text=f'Le mot "{nouveau_mot}" a été ajouté à la liste !')
+            entree_mot.delete(0, tk.END)
+        else:
+            label_confirmation.config(text='Veuillez entrer un mot.')
+    
+    label_entree = tk.Label(jeu, text='Entrez un nouveau mot :')
+    label_entree.pack()
+
+    entree_mot = tk.Entry(jeu)
+    entree_mot.pack(pady=10)
+
+    bouton_ajouter = tk.Button(jeu, text='Ajouter', command=ajouter_mot)
+    bouton_ajouter.pack(pady=10)
+
+    label_confirmation = tk.Label(jeu, text='')
+    label_confirmation.pack(pady=10)
+        
     def dessin_pendu():
         canvas = Canvas(jeu, width=Image_1.width(), height=Image_2.height())
         canvas.pack(side= LEFT)
-        Image_1= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDU/imagependu0.png")
-        Image_2= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDU\imagependu1.png")
-        Image_3= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDUimagependu2.png")
-        Image_4= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDUimagependu3.png")
-        Image_5=Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDU\imagependu4.png")
-        Image_6= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDU\imagependu5.png")
-        Image_7= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDU/imagependu6.png")
-        Image_8= Image.open("C:\Fac\L1 Semestre 2\IN200N\IMAGES PENDU/imagependu7.png")
+        Image_1= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu0.png")
+        Image_2= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu1.png")
+        Image_3= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu2.png")
+        Image_4= Image.open("C:/Fac/L1 Semestre 2/IN200N\IMAGES PENDU/imagependu3.png")
+        Image_5= Image.open("C:/Fac/L1 Semestre 2/IN200N/IMAGES PENDU/imagependu4.png")
+        Image_6= Image.open("C:/Fac/L1 Semestre 2/IN200N/IMAGES PENDU/imagependu5.png")
+        Image_7= Image.open("C:/Fac/L1 Semestre 2/IN200N/IMAGES PENDU/imagependu6.png")
+        Image_8= Image.open("C:/Fac/L1 Semestre /\IN200N/IMAGES PENDU/imagependu7.png")
         photo1 = ImageTk.PhotoImage(Image_1)
         photo2 = ImageTk.PhotoImage(Image_2)
         photo3 = ImageTk.PhotoImage(Image_3)
@@ -261,13 +287,18 @@ def jeu_du_pendu_aléatoire() :
             canvas.create_image(0, 0, anchor=NW, image=photo7)
         if tentatives_restantes == 0 :
             canvas.create_image(0, 0, anchor=NW, image=photo8)
+        im = PhotoImage(file=Image_1)
+        dessin_pendu.create_image(x=0, y=100, image = im)
         
-        
+   
 
+
+
+   
     def rejouer() :
         jeu.destroy()
         jeu_du_pendu_aléatoire()
-    bouton_rejouer = tk.Button(jeu, text='Rejouer', command=rejouer)
+    bouton_rejouer = tk.Button(jeu, text='Rejouer', fg="green", command=rejouer)
     bouton_rejouer.pack()      
 
 # Configuration du bouton pour appeler la fonction de gestion des tentatives
@@ -279,8 +310,8 @@ def jeu_du_pendu_aléatoire() :
     def exit_jeu() :
         jeu.destroy()
     
-    bouton_quitter_jeu = Button(jeu, text="Revenir au menu principale", command=(exit_jeu))
-    bouton_quitter_jeu.pack(pady= 100)
+    bouton_quitter_jeu = Button(jeu, text="Revenir au menu principale", fg= "red", command=(exit_jeu))
+    bouton_quitter_jeu.pack(pady= 30)
 
 #---------------------------------------------------------------------------------------------------------------------
 # source : https://learntutorials.net/fr/pygame/topic/7419/ajout-de-musique-de-fond-et-d-effets-sonores
@@ -313,22 +344,30 @@ VOLUME_OPTIONS = [("Mute", 0.0), ("Faible", 0.2), ("Moyen", 0.5), ("Elevé", 1.0
 
 #--------------------------------------------------------------------------------------------------------------------
 
-bouton_play = Button(text="Jouer", command=(jeu_du_pendu))    
+
+bouton_play = Button(text="Jouer",fg="blue", command=(jeu_du_pendu))    
 bouton_play.pack()                                         
 
-bouton_play_2 = Button(text="Jouer Aléatoire", command=(jeu_du_pendu_aléatoire))
+bouton_play_2 = Button(text="Jouer Aléatoire",fg="green", command=(jeu_du_pendu_aléatoire))
 bouton_play_2.pack()
 
-bouton_leave = Button(text="Quitter", command=(quit))
-bouton_leave.pack(pady=200)
+
+
+bouton_leave = Button(text="Quitter",fg= "red", command=(quit))
+bouton_leave.pack(pady=100)
 
 paramètres = tkinter.Menu(mainmenu)                        
 paramètres.add_radiobutton(label= 'Volume Sonore', command=(change_vol))
 mainmenu.add_cascade(label= 'Paramètres', menu= paramètres)  
 
+score_button = tkinter.Menu(mainmenu)
+score_button.add_radiobutton(label= 'Score',command= "test")
+mainmenu.add_cascade(label='Score')
+
 aide = tkinter.Menu(mainmenu)
 aide.add_radiobutton(label= 'Aide', command=(aide_pendu))
 mainmenu.add_cascade(label= 'Aide', menu= aide)
+
 
 graphique.config(menu=mainmenu)
 
